@@ -1,11 +1,25 @@
 <template>
   <div id="app">
+    <selection :index="option.index" :selections="option.selections"></selection>
   </div>
 </template>
 
 <script>
+import Selection from './components/selection/Selection'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Selection
+  },
+  data: function () {
+    return {
+      option: {
+        index: 1,
+        selections: ['abka', 'edun', 'na', 'ula']
+      }
+    }
+  }
 }
 </script>
 
