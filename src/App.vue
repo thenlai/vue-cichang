@@ -1,31 +1,33 @@
 <template>
   <div id="app">
-    <header>
+    <header id="app-header">
       <button class="action quit">quit</button>
       <span class="progress-bar">
-
+        {{current}} - {{total}}
       </span>
-      <span class="statistics"></span>
+      <span class="statistics">{{score}}</span>
     </header>
-    <selection :hint="option.hint" :index="option.index" :selections="option.selections"></selection>
+    <selection v-bind="games[0]"></selection>
   </div>
 </template>
 
 <script>
 import Selection from './components/selection/Selection'
+import Store from './store'
 
 export default {
   name: 'app',
   components: {
     Selection
   },
+  computed: {
+    total: function () { return this.games.length }
+  },
   data: function () {
     return {
-      option: {
-        hint: 'wind',
-        index: 1,
-        selections: ['そら', 'かぜ', 'あめ', 'かわ']
-      }
+      games: Store.state.games,
+      current: 1,
+      score: 0
     }
   }
 }
@@ -42,6 +44,27 @@ export default {
   max-width: 640px;
   margin: 0 auto;
 }
+#app-header {
+  display: flex;
+  justify-content: space-between;
+}
+#app-header .quit {
+  
+}
+.progress-bar {
+  flex: 1;
+  text-align: center;
+}
+
+.action {
+  background: none;
+  border: none;
+  outline: none;
+}
+.action:active {
+  outline: none;
+}
+
 * {
   -webkit-touch-callout:none;
   -webkit-user-select:none;
