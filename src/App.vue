@@ -13,7 +13,6 @@
 
 <script>
 import Selection from './components/selection/Selection'
-import Store from './store'
 
 export default {
   name: 'app',
@@ -25,7 +24,11 @@ export default {
   },
   data: function () {
     return {
-      games: Store.state.games,
+      games: [{
+        hint: 'wind',
+        index: 1,
+        selections: ['そら', 'かぜ', 'あめ', 'かわ']
+      }],
       current: 1,
       score: 0
     }
