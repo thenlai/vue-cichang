@@ -1,0 +1,18 @@
+
+export default {
+  // user
+  LOG_IN: 'LOG_IN',
+
+  // game
+  GAME_INIT: 'GAME_INIT',
+  GAME_NEXT: 'GAME_NEXT',
+  GAME_PAUSE: 'GAME_PAUSE',
+  GAME_RESUME: 'GAME_RESUME',
+  GAME_FINISH: 'GAME_FINISH',
+
+  // editor
+  SET_BOOK_META: 'SET_META',
+  SAVE_BOOK: 'SAVE_BOOK',
+  HISTORY_PREV: 'HISTORY_PREV',
+  HISTORY_NEXT: 'HISTORY_NEXT'
+}
