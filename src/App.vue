@@ -1,39 +1,12 @@
 <template>
   <div id="app">
-    <header id="app-header">
-      <button class="action quit">quit</button>
-      <span class="progress-bar">
-        {{current}} - {{total}}
-      </span>
-      <span class="statistics">{{score}}</span>
-    </header>
-    <selection v-bind="games[0]"></selection>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Selection from './components/selection/Selection'
-
 export default {
-  name: 'app',
-  components: {
-    Selection
-  },
-  computed: {
-    total: function () { return this.games.length }
-  },
-  data: function () {
-    return {
-      games: [{
-        hint: 'wind',
-        index: 1,
-        selections: ['そら', 'かぜ', 'あめ', 'かわ']
-      }],
-      current: 1,
-      score: 0
-    }
-  }
+  name: 'app'
 }
 </script>
 

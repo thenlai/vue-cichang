@@ -1,5 +1,5 @@
-import editor from 'editor'
-import game from 'game'
+import editor from './editor/index'
+import game from './game/index'
 
 export default {
   editor,

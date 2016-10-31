@@ -1,4 +1,4 @@
 
 export default {
-  isLogin: state => !!state.user.current,
+  isLogin: state => !!state.user.current
 }

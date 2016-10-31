@@ -1,7 +1,7 @@
-import state from 'editorState'
-import getters from 'editorGetters'
-import actions from 'editorActions'
-import mutations from 'editorMutations'
+import state from './editorState'
+import getters from './editorGetters'
+import actions from './editorActions'
+import mutations from './editorMutations'
 
 export default {
   state,
