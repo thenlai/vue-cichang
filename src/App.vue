@@ -8,6 +8,7 @@
       <span class="statistics">{{score}}</span>
     </header>
     <selection v-bind="games[0]"></selection>
+    <router-view></router-view>
   </div>
 </template>
 

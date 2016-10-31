@@ -5,10 +5,12 @@
       <li
       v-for="(letter, index) in spellCandidates"
       @click="select(index)">
-        {{letter}}
+        <button>{{letter}}<button>
+      </li>
+      <li>
+      <button @click="check">del</button>
       </li>
     </ul>
-    <button @click="check">del</button>
   </div>
 </template>
 

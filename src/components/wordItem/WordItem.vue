@@ -4,8 +4,6 @@
     <br>
     <textarea placeholder="word description" v-model="desc"><textarea>
     <br>
-    
-
     <button @click="submit">create</button>
   </div>
 </template>
