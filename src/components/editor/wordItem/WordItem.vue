@@ -16,7 +16,7 @@
     <input v-model="conf_desc[2]"></input><br>
     <input v-model="conf_desc[3]"></input><br>
     <br>
-    <button @click="submit">create</button>
+    <button @click="submit">{{activeId===null ? 'create': 'edit'}}</button>
   </div>
 </template>
 
@@ -24,6 +24,12 @@
 import types from '../../../store/types'
 
 export default {
+  props: {
+    activeId: {
+      type: Number,
+      required: true
+    }
+  },
   data () {
     return {
       spell: '',
@@ -36,6 +42,8 @@ export default {
   },
   methods: {
     submit () {
+      // or:
+      // this.$emit('submit-edit', {})
       this.$store.commit(types.ADD_WORD, {
         spell: this.spell,
         desc: this.desc,

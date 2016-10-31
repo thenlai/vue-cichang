@@ -3,6 +3,9 @@
     <h1>Word Game Editor</h1>
     <div id="edit-body">
       <aside id="edit-aside-list">
+        <div>
+          <button @click="newWord">new word</button>
+        </div>
         <ul>
           <li
             v-for="(word, index) in words"
@@ -14,7 +17,7 @@
         </ul>
       </aside>
       <div id="edit-panel">
-        <WordItem></WordItem>
+        <WordItem :activeId="activeId"></WordItem>
       </div>
     </div>
   </div>
@@ -33,10 +36,10 @@
       }
     },
     computed: {
-      activeId: function () {
+      activeId () {
         return this.$store.getters.activeWordId
       },
-      words: function () {
+      words () {
         return this.$store.getters.currentWordList
       }
     },
@@ -45,6 +48,8 @@
         this.$store.commit(types.SELECT_WORD, {
           id: index
         })
+      },
+      newWord () {
       }
     },
     watch: {
@@ -71,6 +76,7 @@
   #edit-aside-list .word-item {
     padding: 0.5rem 1rem;
     border-bottom: 1px dashed #ddd;
+    cursor: pointer;
   }
   #edit-aside-list .word-item.active {
     background: #eee;
