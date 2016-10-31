@@ -9,10 +9,6 @@ export default {
     state.description = desc
   },
 
-  [types.ADD_WORD] (state, {word}) {
-    state.data.push(word)
-  },
-
   [types.SAVE_BOOK] (state) {
 
   },
@@ -23,5 +19,14 @@ export default {
 
   [types.HISTORY_NEXT] (state) {
 
+  },
+
+  [types.SELECT_WORD] (state, {id}) {
+    state.current.activeId = id
+  },
+
+  [types.ADD_WORD] (state, word) {
+    state.current.wordList.push(word)
   }
+
 }

@@ -2,25 +2,46 @@
   <div class="word-item">
     <input type="text" placeholder="word spell" v-model="spell">
     <br>
-    <textarea placeholder="word description" v-model="desc"><textarea>
+    <textarea placeholder="word description" v-model="desc"></textarea>
     <br>
-    
-
+    <h4>Confusing spell:</h4>
+    <input v-model="conf_spell[0]"></input><br>
+    <input v-model="conf_spell[1]"></input><br>
+    <input v-model="conf_spell[2]"></input><br>
+    <input v-model="conf_spell[3]"></input><br>
+    <br>
+    <h4>Confusing descriptions:</h4>
+    <input v-model="conf_desc[0]"></input><br>
+    <input v-model="conf_desc[1]"></input><br>
+    <input v-model="conf_desc[2]"></input><br>
+    <input v-model="conf_desc[3]"></input><br>
+    <br>
     <button @click="submit">create</button>
   </div>
 </template>
 
 <script>
+import types from '../../../store/types'
+
 export default {
-  data: function() {
+  data () {
     return {
       spell: '',
-      desc: ''
+      desc: '',
+      conf_spell: [],
+      conf_desc: []
     }
   },
+  created () {
+  },
   methods: {
-    submit: function() {
-
+    submit () {
+      this.$store.commit(types.ADD_WORD, {
+        spell: this.spell,
+        desc: this.desc,
+        conf_spell: this.conf_spell,
+        conf_desc: this.conf_desc
+      })
     }
   }
 }

@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 
 import Home from 'components/Home'
 import Editor from 'components/editor/Editor'
+import EditList from 'components/editor/EditList'
 import EditSet from 'components/editor/EditSet'
 import Game from 'components/game/Game'
 import GameMain from 'components/Game/GameMain'
@@ -19,6 +20,11 @@ const router = {
       name: 'edit',
       component: Editor,
       children: [
+        {
+          path: '',
+          name: 'editList',
+          component: EditList
+        },
         {
           path: ':setId',
           name: 'editSet',
