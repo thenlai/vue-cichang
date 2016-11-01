@@ -1,26 +1,16 @@
-<template>
-  <div>
-    <h1>Word Game Editor</h1>
-    <div id="edit-body">
-      <aside id="edit-aside-list">
-        <div>
-          <button @click="newWord">new word</button>
-        </div>
-        <ul>
-          <li
-            v-for="(word, index) in words"
-            @click.stop="select(index)"
-            :class="['word-item', {active: (activeId === index)}]">
-            <h4 class="word-spell">{{word.spell}}</h4>
-            <p class="word-desc">{{word.desc}}</p>
-          </li>
-        </ul>
-      </aside>
-      <div id="edit-panel">
-        <WordItem :activeId="activeId"></WordItem>
-      </div>
-    </div>
-  </div>
+<template lang="jade">
+section
+  h1 Word Game Editor
+  #edit-body
+    aside#edit-aside-list
+      div
+        button(@click="newWord") new word
+      ul
+        li(v-for="(word, index) in words", @click.stop="select(index)", :class="['word-item', {active: (activeId === index)}]")
+          h4.word-spell {{word.spell}}
+          p.word-desc {{word.desc}}
+    #edit-panel
+      WordItem(:activeId="activeId")
 </template>
 
 <script>
@@ -60,7 +50,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   #edit-body {
     display: flex;
   }
@@ -68,25 +58,25 @@
     width: 18rem;
     margin-right: 2rem;
     background: #f7f7f7;
-  }
-  #edit-aside-list ul {
-    margin: 0;
-    padding: 0;
-  }
-  #edit-aside-list .word-item {
-    padding: 0.5rem 1rem;
-    border-bottom: 1px dashed #ddd;
-    cursor: pointer;
-  }
-  #edit-aside-list .word-item.active {
-    background: #eee;
-  }
-  #edit-aside-list .word-spell {
-    margin: 0 0 0.5rem 0;
-    padding: 0;
-  }
-  #edit-aside-list .word-desc {
-    margin: 0;
-    padding: 0;
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    .word-item {
+      padding: 0.5rem 1rem;
+      border-bottom: 1px dashed #ddd;
+      cursor: pointer;
+      &.active {
+        background: #eee;
+      }
+    }
+    .word-spell {
+      margin: 0 0 0.5rem 0;
+      padding: 0;
+    }
+    .word-desc {
+      margin: 0;
+      padding: 0;
+    }
   }
 </style>
