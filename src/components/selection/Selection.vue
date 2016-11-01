@@ -1,18 +1,13 @@
-<template>
-  <section>
-    <h1 class="hint">{{hint}}</h1>
-    <ul :class='["selection-list", {error: isError}]'>
-      <li
-      v-for='(item, i) in selections'
-      @click.stop='submit(i)'
-      :class='["selection", {"selected": selectedIndex===i}, {"answer": index===i}]'
-      >{{item}}</li>
-    </ul>
-    <div v-if="isError" class="action-group">
-      <button class="action view">view</button>
-      <button class="action next">next</button>
-    </div>
-  </section>
+<template lang="jade">
+section
+  h1.hint" {{hint}}
+    ul(:class='["selection-list", {error: isError}]')
+      li(v-for='(item, i) in selections',
+      @click.stop='submit(i)',
+      :class='["selection", {"selected": selectedIndex===i}, {"answer": index===i}]') {{item}}
+    div(v-if="isError", class="action-group")
+      button.action.view view
+      button.action.next next
 </template>
 
 <script>

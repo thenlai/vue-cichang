@@ -1,13 +1,10 @@
-<template>
-  <div class="set-list">
-    <h1>Editor list</h1>
-    <ul>
-      <li v-for="li in list" @click.stop="goEdit">
-        {{li.name}}
-      </li>
-    </ul>
-    <button @click.stop="newSet">new set</button>
-  </div>
+<template lang="jade">
+.set-list
+  h1 Editor list
+  ul
+    li(v-for="li in list", @click.stop="goEdit")
+      {{li.name}}
+  button(@click.stop="newSet") new set
 </template>
 
 <script>
@@ -31,7 +28,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   .set-list {
     
   }
