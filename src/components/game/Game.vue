@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <h4>game</h4>
-    <router-view></router-view>
-  </div>
+div
+  h4 {{name}}
+  router-view
 </template>
 
 <script>
@@ -15,7 +14,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
 #app-game {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -29,10 +28,10 @@
 #app-header {
   display: flex;
   justify-content: space-between;
+  .quit {
+  }
 }
-#app-header .quit {
-  
-}
+
 .progress-bar {
   flex: 1;
   text-align: center;
@@ -42,23 +41,8 @@
   background: none;
   border: none;
   outline: none;
-}
-.action:active {
-  outline: none;
-}
-
-* {
-  -webkit-touch-callout:none;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
-}
-input, textarea, .selectable {
-    -webkit-touch-callout:default;
-    -webkit-user-select:text;
-    -moz-user-select:text;
-    -ms-user-select:text;
-    user-select:text;
+  &:active {
+    outline: none;
+  }
 }
 </style>

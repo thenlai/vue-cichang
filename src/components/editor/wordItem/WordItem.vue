@@ -1,23 +1,22 @@
 <template>
-  <div class="word-item">
-    <input type="text" placeholder="word spell" v-model="spell">
-    <br>
-    <textarea placeholder="word description" v-model="desc"></textarea>
-    <br>
-    <h4>Confusing spell:</h4>
-    <input v-model="conf_spell[0]"></input><br>
-    <input v-model="conf_spell[1]"></input><br>
-    <input v-model="conf_spell[2]"></input><br>
-    <input v-model="conf_spell[3]"></input><br>
-    <br>
-    <h4>Confusing descriptions:</h4>
-    <input v-model="conf_desc[0]"></input><br>
-    <input v-model="conf_desc[1]"></input><br>
-    <input v-model="conf_desc[2]"></input><br>
-    <input v-model="conf_desc[3]"></input><br>
-    <br>
-    <button @click="submit">{{activeId===null ? 'create': 'edit'}}</button>
-  </div>
+.word-item
+  input(type="text", placeholder="word spell", v-model="spell")
+  br
+  textarea(placeholder="word description", v-model="desc")
+  br
+  h4 Confusing spell:
+  ul
+    li(v-for="i in [1, 2, 3, 4]")
+      input(v-model="conf_spell[i-1]")
+      br
+  br
+  h4 Confusing descriptions:
+  ul
+    li(v-for="i in [1, 2, 3, 4]")
+      input(v-model="conf_desc[i-1]")
+      br
+  br
+  button(@click="submit") {{activeId===null ? 'create': 'edit'}}
 </template>
 
 <script>
