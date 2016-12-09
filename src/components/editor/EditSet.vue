@@ -1,5 +1,5 @@
 <template lang="jade">
-section
+section.edit-set
   h1 Word Game Editor
   #edit-body
     aside#edit-aside-list
@@ -9,8 +9,9 @@ section
         li(v-for="(word, index) in words", @click.stop="select(index)", :class="['word-item', {active: (activeId === index)}]")
           h4.word-spell {{word.spell}}
           p.word-desc {{word.desc}}
+          button.delete-word(@click="remove") remove
     #edit-panel
-      WordItem(:activeId="activeId")
+      WordItem(:activeId="activeId", :word="currentWord", @edit-word="edit", @add-word="add")
 </template>
 
 <script>
@@ -23,28 +24,52 @@ section
     },
     data () {
       return {
+        activeId: this.$store.getters.activeWordId,
+        words: this.$store.getters.currentWordList
       }
     },
     computed: {
-      activeId () {
-        return this.$store.getters.activeWordId
-      },
-      words () {
-        return this.$store.getters.currentWordList
+      currentWord () {
+        if (this.activeId !== null) return this.words[this.activeId]
+        return {
+          spell: '',
+          desc: '',
+          conf_spell: [],
+          conf_desc: []
+        }
       }
     },
     methods: {
       select (index) {
-        this.$store.commit(types.SELECT_WORD, {
-          id: index
-        })
+        this.activeId = index
+      },
+      remove () {
       },
       newWord () {
+      },
+      edit () {
+
+      },
+      add (word) {
+        this.words.push(word)
+      },
+      save () {
+        this.$store.commit(types.SELECT_WORD, {
+          id: this.activeId
+        })
+        // this.$store.commit(types.WORD_LIST, {
+        //  data: words
+        // })
       }
     },
     watch: {
-      'activeId': function (id) {
+      'activeId': (id) => {
         // todo:
+        // console.log(this.activeId)
+      },
+      'words': (newWords) => {
+        // todo:
+        console.log('w')
       }
     }
   }

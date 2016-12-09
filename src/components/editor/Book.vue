@@ -1,28 +1,24 @@
 <template lang="jade">
-div#editor
-  router-view
+#book
+  <router-view></router-view>
 </template>
 
 <script>
   export default {
     data () {
       return {
-        list: this.$store.getters.editWords
       }
     },
     created () {
       //
     },
     methods: {
-      goEdit () {
-
-      },
-      newSet () {
-
-      }
     }
   }
 </script>
 
-<style>
+<style lang="scss">
+#book {
+
+}
 </style>

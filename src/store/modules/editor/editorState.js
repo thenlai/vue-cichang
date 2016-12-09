@@ -16,11 +16,13 @@ export default {
     wordList: [
       {
         spell: 'pomme',
-        desc: 'apple'
+        desc: 'f.n. apple',
+        conf_spell: ['', '', '', ''],
+        conf_desc: ['', '', '', '']
       },
       {
         spell: 'fille',
-        desc: 'girl'
+        desc: 'f.n. girl'
       }
     ]
   }

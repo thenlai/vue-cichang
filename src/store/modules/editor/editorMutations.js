@@ -27,6 +27,11 @@ export default {
 
   [types.ADD_WORD] (state, word) {
     state.current.wordList.push(word)
+  },
+
+  [types.EDIT_WORD] (state, {id, word}) {
+    // state.current.wordList.$set(id, word)
+    state.current.wordList[id] = word
   }
 
 }

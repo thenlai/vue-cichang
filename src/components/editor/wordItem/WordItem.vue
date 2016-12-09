@@ -1,61 +1,83 @@
-<template>
+<template lang="jade">
 .word-item
-  input(type="text", placeholder="word spell", v-model="spell")
+  input.spell(type="text", placeholder="word spell", v-model="spell")
   br
   textarea(placeholder="word description", v-model="desc")
   br
-  h4 Confusing spell:
-  ul
-    li(v-for="i in [1, 2, 3, 4]")
-      input(v-model="conf_spell[i-1]")
-      br
+  h4 Examples
+  textarea(placeholder="examples, {...} for the word it self")
+  div
+    input(type="checkbox")
+    label 使用自定义混淆词
+  h4 Confusing words:
+  ul.list
+    li(v-for="i in [0,1,2,3]")
+      input(v-model="conf_spell[i]")
   br
+  div
+    input(type="checkbox")
+    label 使用自定义混淆解释
   h4 Confusing descriptions:
-  ul
-    li(v-for="i in [1, 2, 3, 4]")
-      input(v-model="conf_desc[i-1]")
-      br
+  input(v-model="conf_desc[0]")br
+  input(v-model="conf_desc[1]")br
+  input(v-model="conf_desc[2]")br
+  input(v-model="conf_desc[3]")br
   br
-  button(@click="submit") {{activeId===null ? 'create': 'edit'}}
+  button(@click="submit"){{activeId===null ? 'create': 'edit'}}
+</div>
 </template>
 
 <script>
-import types from '../../../store/types'
-
 export default {
   props: {
     activeId: {
       type: Number,
       required: true
+    },
+    word: {
+      type: Object,
+      required: true
     }
   },
   data () {
-    return {
-      spell: '',
-      desc: '',
-      conf_spell: [],
-      conf_desc: []
-    }
+    return {...this.word}
+  },
+  computed: {
   },
   created () {
   },
   methods: {
     submit () {
       // or:
-      // this.$emit('submit-edit', {})
-      this.$store.commit(types.ADD_WORD, {
-        spell: this.spell,
-        desc: this.desc,
-        conf_spell: this.conf_spell,
-        conf_desc: this.conf_desc
-      })
+      if (this.activeId !== null) {
+        this.$emit('eidt-word', this.word)
+      } else {
+        this.$emit('add-word', this.word)
+      }
+    }
+  },
+  watch: {
+    'activeId': function (newId) {
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss">
   .word-item {
-
+    input,
+    textarea {
+      outline: none;
+    }
+    .spell {
+      border: none;
+      border-bottom: 1px dashed #333;
+      font-size: 2rem;
+      color: #111;
+      margin-bottom: 1.5rem;
+    }
+  }
+  .list li {
+    list-style-type: none;
   }
 </style>

@@ -2,7 +2,7 @@
 .set-list
   h1 Editor list
   ul
-    li(v-for="li in list", @click.stop="goEdit")
+    li(v-for="(li, i) in list", @click.stop="goEdit(i)")
       {{li.name}}
   button(@click.stop="newSet") new set
 </template>
@@ -18,8 +18,8 @@
       //
     },
     methods: {
-      goEdit () {
-
+      goEdit (id) {
+        // this.$history.push(id)
       },
       newSet () {
 
